@@ -64,7 +64,7 @@ app.use("/api/pdf", pdf);
 //fazendo com que as imagens fiquem acessiveis
 app.use("/files", express.static(path.resolve(__dirname, "..", "uploads")));
 
-//fazendo com que as imagens fiquem acessiveis
+//salvando o log!!!
 app.use(
   "/logs",
   express.static(path.resolve(__dirname, "..", "logs")),
@@ -89,6 +89,6 @@ app.use("/api", (req, res) => {
   return res.send("Server running!!!!");
 });
 
-app.listen(process.env.PORT || 3001, () => {
-  console.log(`Server started at port 3001`);
+app.listen(process.env.PORT || 8080, () => {
+  console.log(`Server started at port 8080`);
 });
