@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.css"],"names":[],"mappings":"AAAA,oBACC,UAAW,CACX,WACD,CAEA,kBACC,iBAAkB,CAClB,WAAY,CACZ,WACD","file":"25.ec383bb1.chunk.css","sourcesContent":[".notfound-container {\n\twidth: 100%;\n\theight: 100%;\n}\n\n.notfound-content {\n\ttext-align: center;\n\tmargin: auto;\n\twidth: 800px;\n}\n"]}

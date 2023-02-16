@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatorio de Consultas</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <style>
+      .page {
+        font-size: 10px;
+        padding: 20px;
+        background: white;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+      }
+      body {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="mt-4">
+        <div class="d-flex justify-content-center mt-4">
+          <div>
+            <img
+              src="https://podobucketv2.s3-sa-east-1.amazonaws.com/Logo2.jpg"
+            />
+          </div>
+        </div>
+        <h5 class="mb-5 mt-5">Listagem de Consultas</h5>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Data/Hora</th>
+                <th>Cliente</th>
+                <th>Procedimentos</th>
+                <th>Total</th>
+                <th>Tipo</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (consults.length > 0) { %> <% consults.forEach(item => {%>
+              <tr>
+                <td><%= dayjs(item.date).format('DD/MM/YYYY HH:mm')%></td>
+                <td><%= item.client.name%></td>
+                <td>
+                  <% item.procedures.forEach(proc => {%>
+                  <p style="padding-bottom: 0px"><%= proc.name%></p>
+                  <%})%>
+                </td>
+                <td>R$ <%= item.total%></td>
+                <td><%= item.type_consult%></td>
+                <td><%= item.status%></td>
+              </tr>
+
+              <%})%> <% } %>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><strong>Total:</strong></td>
+                <td><strong><%= consults.length%></strong></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

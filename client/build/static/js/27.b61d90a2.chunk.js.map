@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/Logs/index.jsx"],"names":["Logs"],"mappings":"kHAAA,2BAYeA,UARf,WACC,OACC,6BACC","file":"static/js/27.b61d90a2.chunk.js","sourcesContent":["import React from 'react';\n\n// import { Container } from './styles';\n\nfunction Logs() {\n\treturn (\n\t\t<div>\n\t\t\t<h4>Logs</h4>\n\t\t</div>\n\t);\n}\n\nexport default Logs;\n"],"sourceRoot":""}

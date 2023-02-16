@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.css"],"names":[],"mappings":"AAAA,gDACC,wBACD,CAEA,MACC,gBAAiB,CACjB,gBAAiB,CACjB,iBACD","file":"11.6d30c1d4.chunk.css","sourcesContent":[".ant-select-multiple .ant-select-selection-item {\n\tbackground-color: #74cac9;\n}\n\n.card {\n\tpadding-top: 25px;\n\tmargin: 15px 25px;\n\ttext-align: center;\n}\n"]}

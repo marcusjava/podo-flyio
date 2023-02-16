@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ficha de Consulta</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <style>
+      .page {
+        font-size: 10px;
+        padding: 20px;
+        background: white;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+      }
+      body {
+        box-sizing: border-box;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+
+      .picture {
+        height: 100px;
+        width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="mt-4">
+        <div class="d-flex justify-content-center mt-4">
+          <div>
+            <img
+              src="https://podobucketv2.s3-sa-east-1.amazonaws.com/Logo2.jpg"
+            />
+          </div>
+        </div>
+        <div>
+          <h2 class="mb-5 mt-5">Dados Cliente</h2>
+          <div class="grid-container">
+            <p><strong>Nome:</strong> <%= consult.name%></p>
+            <p><strong>Contato:</strong> <%= consult.contact %></p>
+            <p><strong>CPF:</strong> <%= consult.cpf%></p>
+            <p></p>
+            <p><strong>Rua:</strong> <%= consult.address.street %></p>
+            <p><strong>Bairro:</strong> <%= consult.address.neighborhood%></p>
+            <p><strong>Cidade:</strong> <%= consult.address.city%></p>
+            <p><strong>Estado:</strong> <%= consult.address.state%></p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="mb-5 mt-5">Dados Consulta</h2>
+          <p>
+            <strong>Data/Hora:</strong> <%=
+            dayjs(consult.date).format("DD/MM/YYYY HH:mm")%>
+          </p>
+          <h4>Procedimentos</h4>
+          <div class="grid-container">
+            <% consult.procedures.forEach(item => { %>
+            <p><%= item.name%> - R$<%= item.price%></p>
+            <% }) %>
+          </div>
+          <p><strong>Total:</strong><%= consult.price%></p>
+          <h4>Anamnese</h4>
+          <p>
+            <strong>Descrição proced.:</strong><%= consult.anamnese.desc_proc%>
+          </p>
+          <div class="grid-container">
+            <p>
+              <strong>Esporte:</strong> <%= consult.anamnese.esporte.option ===
+              true ? "Sim" : "Não"%> Qt: <%= consult.anamnese.esporte.qt%> x
+              semana
+            </p>
+            <p>
+              <strong>Pé predominante:</strong> <%=
+              consult.anamnese.pe_predominante%>
+            </p>
+            <p>
+              <strong>Calçado:</strong> Num: <%= consult.anamnese.calcado.num%>
+              Tipo: <%= consult.anamnese.calcado.tipo%> Material: <%=
+              consult.anamnese.calcado.material%>
+            </p>
+            <p>
+              <strong>
+                Medicamento: <%= consult.anamnese.medicamento.option === true ?
+                "Sim" : "Não"%> - <%= consult.anamnese.medicamento.description%>
+              </strong>
+            </p>
+            <p>
+              <strong>Alergia:</strong> <%= consult.anamnese.alergia.option ===
+              true ? "Sim" : "Não"%> - <%=
+              consult.anamnese.alergia.description%>
+            </p>
+            <p>
+              <strong>Doença:</strong> <%= consult.anamnese.doenca.option ===
+              true ? "Sim" : "Não"%> - <%= consult.anamnese.doenca.description%>
+            </p>
+            <p>
+              <strong>Diabetico: </strong>
+              <%= consult.anamnese.diabetico === true ? "Sim" : "Não"%>
+            </p>
+            <p>
+              <strong>Diabetico Familia: </strong>
+              <%= consult.anamnese.diabetico_familia === true ? "Sim" : "Não"%>
+            </p>
+            <p>
+              <strong>Hipertensão: </strong>
+              <%= consult.anamnese.hipertensao === true ? "Sim" : "Não"%>
+            </p>
+            <p>
+              <strong>Cardiopata: </strong>
+              <%= consult.anamnese.cardiopata === true ? "Sim" : "Não"%>
+            </p>
+            <p>
+              <strong>Fumante: </strong>
+              <%= consult.anamnese.fumante === true ? "Sim" : "Não"%>
+            </p>
+            <p>
+              <strong>Etilista: </strong>
+              <%= consult.anamnese.etilista === true ? "Sim" : "Não"%>
+            </p>
+            <p>
+              <strong>DST: </strong>
+              <%= consult.anamnese.dst === true ? "Sim" : "Não"%>
+            </p>
+            <p>
+              <strong>Grav/Lactação: </strong>
+              <%= consult.anamnese.grav_lact === true ? "Sim" : "Não"%>
+            </p>
+          </div>
+          <p>
+            <strong>Outros: </strong>
+            <%= consult.anamnese.outros%>
+          </p>
+          <h5>Lesões na Pele</h5>
+          <ul class="grid-container">
+            <% consult.anamnese.pele_lesoes.forEach(item => { %>
+            <li><strong><%= item.key%></strong> - <%= item.value%></li>
+            <% }) %>
+          </ul>
+          <h5>Lesões na Unha</h5>
+          <ul class="grid-container">
+            <% consult.anamnese.unhas_lesoes.forEach(item => { %>
+            <li><strong><%= item.key%></strong> - <%= item.value%></li>
+            <% }) %>
+          </ul>
+          <h5>Lesões Ortopedicas</h5>
+          <ul class="grid-container">
+            <% consult.anamnese.orto_lesoes.forEach(item => { %>
+            <li><strong><%= item.key%></strong> - <%= item.value%></li>
+            <% }) %>
+          </ul>
+          <h5>Fotos</h5>
+          <div class="grid-container">
+            <% consult.photos.forEach(item => { %>
+            <img class="picture" src="<%= item.url%>" alt="fotos" />
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
